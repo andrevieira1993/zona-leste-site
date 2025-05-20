@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Zona Leste Contabilidade</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f0f0;
+    color: #222;
+  }
+  header {
+    background-color: #000;
+    color: #00a651;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  header h1 {
+    margin: 0;
+    font-weight: bold;
+  }
+  nav {
+    display: flex;
+    background-color: #333;
+  }
+  nav button {
+    flex: 1;
+    padding: 12px 0;
+    border: none;
+    background-color: #222;
+    color: #ccc;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  nav button.active {
+    background-color: #007a33;
+    color: white;
+  }
+  nav button:hover:not(.active) {
+    background-color: #444;
+    color: white;
+  }
+  nav button svg {
+    margin-bottom: 5px;
+    fill: currentColor;
+    width: 20px;
+    height: 20px;
+  }
+  main {
+    background: white;
+    max-width: 960px;
+    margin: 20px auto 60px;
+    padding: 20px 30px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px #aaa3;
+  }
+  section {
+    display: none;
+  }
+  section.active {
+    display: block;
+  }
+  h2 {
+    color: #007a33;
+    border-bottom: 3px solid #007a33;
+    padding-bottom: 6px;
+  }
+  /* Estilos Gerais para texto */
+  p, li {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  ul {
+    padding-left: 20px;
+  }
+  /* Serviços */
+  #servicos ul li {
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  /* Publicações */
+  #publicacoes .publicacao {
+    background: #e1f0d9;
+    border-left: 6px solid #007a33;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+  #publicacoes .publicacao h3 {
+    margin-top: 0;
+    text-transform: uppercase;
+    color: #004d20;
+  }
+  #publicacoes .publicacao p {
+    white-space: pre-line;
+  }
+  /* Form Dúvidas */
+  #duvidas form {
+    max-width: 600px;
+    margin-top: 15px;
+  }
+  #duvidas label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+  }
+  #duvidas input, #duvidas textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  #duvidas button {
+    margin-top: 12px;
+    background-color: #007a33;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  #duvidas button:hover {
+    background-color: #00591a;
+  }
+  footer {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    padding: 20px 10px 40px;
+    margin-top: 40px;
+  }
+  footer .spacer {
+    height: 80px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Zona Leste Contabilidade</h1>
+</header>
+
+<nav>
+  <button class="active" data-tab="sobre" title="Sobre">
+    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+    SOBRE
+  </button>
+  <button data-tab="servicos" title="Serviços">
+    <svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm4 0h2v-2H7v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2zm-16 4h2v-2H3v2zm4 0h2v-2H7v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2z"/></svg>
+    SERVIÇOS
+  </button>
+  <button data-tab="duvidas" title="Dúvidas">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm1.07-7.75c-.9.92-1.07 1.25-1.07 2.25h-2v-.5c0-1.1.45-1.99 1.17-2.71.59-.58 1.41-1.04 1.41-1.79 0-.83-.67-1.5-1.5-1.5S9 8.67 9 9.5H7c0-1.66 1.34-3 3-3s3 1.34 3 3c0 1.17-.61 1.89-1.93 3.04z"/></svg>
+    DÚVIDAS
+  </button>
+  <button data-tab="publicacoes" title="Publicações">
+    <svg viewBox="0 0 24 24"><path d="M3 4h18v2H3zM3 7h12v2H3zM3 10h18v2H3zM3 13h12v2H3zM3 16h18v2H3zM3 19h12v2H3z"/></svg>
+    PUBLICAÇÕES
+  </button>
+</nav>
+
+<main>
+  <section id="sobre" class="active">
+    <h2>Fundador</h2>
+    <p><strong>André Donizete Vieira:</strong> Formado Contabilidade pela Faculdade Unip, Ano 2019, Aprovador CRC-RO, </p>
+    <p>Somos uma empresa dedicada a oferecer serviços contábeis de alta qualidade de forma Digital para Microempreendedores Individuais (MEI) e autônomos da Zona Leste.</p>
+  </section>
+
+  <section id="servicos">
+    <h2>Serviços</h2>
+    <ul>
+      <li>CREDENCIAMENTO PARA EMISSÃO DE NF-E DE MEI</li>
+      <li>PARCELAMENTOS IMPOSTOS</li>
+      <li>ABERTURA DE EMPRESAS MEI</li>
+      <li>REGULARIZAÇÃO CNPJ</li>
+      <li>DECLARAÇÃO DE IMPOSTO DE RENDA</li>
+      <li>DECORE</li>
+      <li>GERAÇÃO RECIBO DE PAGAMENTO PARA MEI E AUTÔNOMO</li>
+      <li>FOLHA DE PAGAMENTO</li>
+    </ul>
+    <p>WhatsApp clique =>: <a href="https://wa.me/5568999941394" target="_blank" style="color:#007a33;">(68) 99994-1394</a></p>
+    <p>WhatsApp clique =>: <a href="https://wa.me/5569992621150" target="_blank" style="color:#007a33;">(69) 99262-1150</a></p>
+  </section>
+
+  <section id="duvidas">
+    <h2>Dúvidas</h2>
+    <form id="formDuvidas">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" required />
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" rows="5" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <p id="msgDuvidas" style="margin-top:15px; color:green; display:none;">Mensagem enviada com sucesso! Obrigado pelo contato.</p>
+  </section>
+
+  <section id="publicacoes">
+    <h2>Publicações</h2>
+    <div id="publicacoesLista">
+      <!-- Notícias vão aparecer aqui -->
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="spacer"></div>
+  © 2025 Zona Leste Contabilidade – Todos os direitos reservados.
+</footer>
+
+<script>
+  // Controle de abas
+  const tabs = document.querySelectorAll('nav button');
+  const sections = document.querySelectorAll('main section');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.getAttribute('data-tab');
+      sections.forEach(sec => {
+        if(sec.id === target) {
+          sec.classList.add('active');
+        } else {
+          sec.classList.remove('active');
+        }
+      });
+    });
+  });
+
+  // Publicações - lista fixada no código pra editar manualmente
+  const publicacoes = [
+    {
+      titulo: "ATUALIZAÇÃO FISCAL MAIO 2025",
+      conteudo: "Informamos que houve alterações nas alíquotas de PIS e COFINS a partir de 01/05/2025.\nConsulte seu contador para adequações."
+    },
+    {
+      titulo: "NOVO SERVIÇO DE PARCELAMENTO",
+      conteudo: "Agora oferecemos parcelamento facilitado para débitos fiscais, consulte condições."
+    }
+    // Para adicionar uma nova publicação, copie o bloco abaixo e cole dentro do array, separando por vírgula
+    /*
+    {
+      titulo: "TÍTULO DA PUBLICAÇÃO",
+      conteudo: "Texto detalhado da publicação, pode usar \\n para quebrar linha."
+    }
+    */
+  ];
+
+  const listaPublicacoes = document.getElementById('publicacoesLista');
+
+  function mostrarPublicacoes() {
+    if(publicacoes.length === 0) {
+      listaPublicacoes.innerHTML = '<p style="color:#aaa;">Nenhuma publicação disponível.</p>';
+      return;
+    }
+
+    listaPublicacoes.innerHTML = '';
+    publicacoes.forEach(pub => {
+      const div = document.createElement('div');
+      div.classList.add('publicacao');
+      div.innerHTML = `<h3>${pub.titulo}</h3><p>${pub.conteudo.replace(/\n/g, '<br>')}</p>`;
+      listaPublicacoes.appendChild(div);
+    });
+  }
+
+  mostrarPublicacoes();
+
+  // Form Dúvidas - só mensagem simulada
+  const formDuvidas = document.getElementById('formDuvidas');
+  const msgDuvidas = document.getElementById('msgDuvidas');
+  formDuvidas.addEventListener('submit', e => {
+    e.preventDefault();
+    // Aqui só exibe mensagem, não envia email (pois não tem backend)
+    msgDuvidas.style.display = 'block';
+    formDuvidas.reset();
+    setTimeout(() => {
+      msgDuvidas.style.display = 'none';
+    }, 4000);
+  });
+</script>
+
+</body>
+</html>

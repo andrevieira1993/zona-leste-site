@@ -5,6 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zona Leste Contabilidade</title>
   <style>
+.colaborador-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.colaborador {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #007a33;
+  box-shadow: 0 2px 8px rgba(0, 122, 51, 0.5);
+}
+
+.colaborador-nome {
+  margin-top: 8px;
+  font-weight: bold;
+  color: #004d20;
+  font-size: 14px;
+  text-align: center;
+}
+
+#sobre img.colaborador {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #007a33;
+  box-shadow: 0 2px 8px rgba(0, 122, 51, 0.5);
+  margin-top: 15px;
+  display: block;
+}
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -150,6 +185,31 @@
     footer .spacer {
       height: 80px;
     }
+
+    /* Estilo para fotos circulares dos colaboradores */
+    .colaboradores {
+      display: flex;
+      gap: 15px;
+      margin: 15px 0 20px;
+    }
+    .foto-colaborador {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #007a33;
+      box-shadow: 0 2px 6px rgba(0, 122, 51, 0.4);
+    }
+
+    /* Estilo do novo section final */
+    #fundador-final {
+      max-width: 960px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 6px;
+      box-shadow: 0 0 8px #aaa3;
+    }
   </style>
 </head>
 <body>
@@ -192,7 +252,7 @@
     </ul>
     <p>WhatsApp clique =>: <a href="https://wa.me/5568999941394" target="_blank" style="color:#007a33;">(68) 99994-1394</a></p>
     <p>WhatsApp clique =>: <a href="https://wa.me/5569992621150" target="_blank" style="color:#007a33;">(69) 99262-1150</a></p> 
- </section>
+  </section>
 
   <section id="duvidas">
     <h2>Dúvidas</h2>
@@ -214,11 +274,30 @@
   </section>
 
   <section id="sobre">
-    <h2>Fundador</h2>
-    <p><strong>André Donizete Vieira:</strong> Formado em Contabilidade pela Faculdade Unip (2019), aprovado CRC-RO.</p>
-    <p>Somos uma empresa dedicada a oferecer serviços contábeis de alta qualidade para MEIs e autônomos da Zona Leste.</p>
-  </section>
+  <h2>Fundador</h2>
+  <p><strong>André Donizete Vieira:</strong> Formado em Contabilidade pela Faculdade Unip (2019), aprovado CRC-RO.</p>
+  <p>Somos uma empresa dedicada a oferecer serviços contábeis de alta qualidade para MEIs e autônomos da Zona Leste.</p>
+
+  <div class="colaborador-container">
+    <img src="fotos/colaborador1.png" alt="Colaborador" class="colaborador" />
+    <p class="colaborador-nome">Francisco</p>
+    <img src="fotos/colaborador2.jpeg" alt="Colaborador" class="colaborador" />
+    <p class="colaborador-nome">André Vieira</p>
+  </div>
+</section>
+
 </main>
+
+<!-- Seção do fundador e colaboradores com fotos circulares no final do site -->
+<section id="fundador-final">
+  <h2>Fundador</h2>
+  <div class="colaboradores">
+    <img src="imagens/andre.jpg" alt="Francisco" class="foto-colaborador" />
+    <img src="imagens/maria.jpg" alt="André Vieira" class="foto-colaborador" />
+  </div>
+  <p><strong>André Donizete Vieira:</strong> Formado em Contabilidade pela Faculdade Unip (2019), aprovado CRC-RO.</p>
+  <p>Somos uma empresa dedicada a oferecer serviços contábeis de alta qualidade para MEIs e autônomos da Zona Leste.</p>
+</section>
 
 <footer>
   <div class="spacer"></div>
@@ -231,48 +310,22 @@
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const target = tab.getAttribute('data-tab');
-      sections.forEach(sec => {
-        sec.classList.toggle('active', sec.id === target);
-      });
-    });
-  });
+tabs.forEach(t => t.classList.remove('active'));
+sections.forEach(sec => sec.classList.remove('active'));
+tab.classList.add('active');
+const id = tab.getAttribute('data-tab');
+document.getElementById(id).classList.add('active');
+});
+});
 
-  const publicacoes = [
-    {
-      titulo: "ATUALIZAÇÃO FISCAL MAIO 2025",
-      conteudo: "Informamos que houve alterações nas alíquotas de PIS e COFINS a partir de 01/05/2025.\nConsulte seu contador para adequações."
-    },
-    {
-      titulo: "NOVO SERVIÇO DE PARCELAMENTO",
-      conteudo: "Agora oferecemos parcelamento facilitado para débitos fiscais, consulte condições."
-    }
-  ];
-
-  const listaPublicacoes = document.getElementById('publicacoesLista');
-  function mostrarPublicacoes() {
-    listaPublicacoes.innerHTML = publicacoes.map(pub => `
-      <div class="publicacao">
-        <h3>${pub.titulo}</h3>
-        <p>${pub.conteudo.replace(/\n/g, '<br>')}</p>
-      </div>
-    `).join('');
-  }
-  mostrarPublicacoes();
-
-  const formDuvidas = document.getElementById('formDuvidas');
-  const msgDuvidas = document.getElementById('msgDuvidas');
-  formDuvidas.addEventListener('submit', e => {
-    e.preventDefault();
-    msgDuvidas.style.display = 'block';
-    formDuvidas.reset();
-    setTimeout(() => {
-      msgDuvidas.style.display = 'none';
-    }, 4000);
-  });
+// Formulário dúvidas - apenas simula envio
+const form = document.getElementById('formDuvidas');
+const msg = document.getElementById('msgDuvidas');
+form.addEventListener('submit', (e) => {
+e.preventDefault();
+msg.style.display = 'block';
+form.reset();
+});
 </script>
 
-</body>
-</html>
+</body> </html>
